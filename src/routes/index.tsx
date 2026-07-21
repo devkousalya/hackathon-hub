@@ -51,6 +51,38 @@ async function fileToDataUrl(file: File): Promise<string> {
   });
 }
 
+type LinkItem = { name: string; url: string };
+
+const DONATE_PLATFORMS: LinkItem[] = [
+  { name: "Goonj", url: "https://goonj.org/donate-material/" },
+  { name: "Robin Hood Army", url: "https://robinhoodarmy.com/" },
+  { name: "GiveIndia", url: "https://www.giveindia.org/" },
+  { name: "Bhumi", url: "https://bhumi.ngo/" },
+  { name: "Local NGO (Google)", url: "https://www.google.com/search?q=NGO+near+me+accepting+donations" },
+];
+
+function donateLink(recipient: string): string {
+  const q = encodeURIComponent(recipient);
+  const lower = recipient.toLowerCase();
+  if (lower.includes("goonj")) return "https://goonj.org/donate-material/";
+  if (lower.includes("robin")) return "https://robinhoodarmy.com/";
+  if (lower.includes("salvation")) return "https://salvationarmy.org/";
+  if (lower.includes("kabadi") || lower.includes("scrap"))
+    return "https://www.google.com/search?q=kabadiwala+near+me";
+  return `https://www.google.com/search?q=${q}+near+me`;
+}
+
+function sellPlatforms(item: string): LinkItem[] {
+  const q = encodeURIComponent(item);
+  return [
+    { name: "OLX", url: `https://www.olx.in/items/q-${q}` },
+    { name: "Quikr", url: `https://www.quikr.com/search?query=${q}` },
+    { name: "Facebook Marketplace", url: `https://www.facebook.com/marketplace/search?query=${q}` },
+    { name: "Cashify", url: `https://www.cashify.in/search?q=${q}` },
+    { name: "WhatsApp friends", url: `https://wa.me/?text=${encodeURIComponent("Selling: " + item)}` },
+  ];
+}
+
 function HomePage() {
   const analyze = useServerFn(analyzeWaste);
   const inputRef = useRef<HTMLInputElement>(null);
