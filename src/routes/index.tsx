@@ -338,6 +338,24 @@ function HomePage() {
                     <p className="text-xs text-muted-foreground">
                       {result.actions.sell.reasoning}
                     </p>
+                    <div className="mt-4 border-t border-border pt-3">
+                      <p className="mb-2 text-xs font-medium text-muted-foreground">
+                        List it here to find buyers:
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {sellPlatforms(result.itemName).map((p) => (
+                          <a
+                            key={p.name}
+                            href={p.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium hover:border-primary hover:text-primary"
+                          >
+                            {p.name} ↗
+                          </a>
+                        ))}
+                      </div>
+                    </div>
                   </>
                 ) : (
                   <p className="text-sm text-muted-foreground">Not worth selling.</p>
