@@ -77,15 +77,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "ReWaste AI — Reuse, Recycle, Donate or Sell" },
-      { name: "description", content: "Snap a photo of any waste or unused item and let AI suggest the best next step — reuse, recycle, donate, or sell with a fair price estimate." },
+      { title: "ReWaste AI — Snap. Detect. Reuse, Recycle, Donate or Sell." },
+      { name: "description", content: "Upload a photo of any waste or unused item. AI tells you if you can reuse, recycle, donate, or sell it — with a fair price estimate." },
       { name: "author", content: "ReWaste AI" },
-      { property: "og:title", content: "ReWaste AI" },
-      { property: "og:description", content: "AI-powered waste sorter: reuse, recycle, donate or sell — with condition-based price estimates." },
+      { property: "og:title", content: "ReWaste AI — Snap. Detect. Reuse, Recycle, Donate or Sell." },
+      { property: "og:description", content: "Upload a photo of any waste or unused item. AI tells you if you can reuse, recycle, donate, or sell it — with a fair price estimate." },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "ReWaste AI" },
       { name: "twitter:card", content: "summary_large_image" },
 
+      { name: "twitter:title", content: "ReWaste AI — Snap. Detect. Reuse, Recycle, Donate or Sell." },
+      { name: "twitter:description", content: "Upload a photo of any waste or unused item. AI tells you if you can reuse, recycle, donate, or sell it — with a fair price estimate." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f13f0e38-87ae-4ed8-a39d-43d772524f2f/id-preview-41cd0612--55eee3ce-e0cb-43bf-8132-4849df7e71bc.lovable.app-1784608767075.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f13f0e38-87ae-4ed8-a39d-43d772524f2f/id-preview-41cd0612--55eee3ce-e0cb-43bf-8132-4849df7e71bc.lovable.app-1784608767075.png" },
     ],
     links: [
       {

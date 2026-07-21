@@ -28,11 +28,11 @@ export const Route = createFileRoute("/")({
         content:
           "Upload a photo of any waste or unused item. AI tells you if you can reuse, recycle, donate, or sell it — with a fair price estimate.",
       },
-      { property: "og:title", content: "ReWaste AI" },
+      { property: "og:title", content: "ReWaste AI — Snap. Detect. Reuse, Recycle, Donate or Sell." },
       {
         property: "og:description",
         content:
-          "AI-powered waste sorter: reuse, recycle, donate or sell — with condition-based price estimates.",
+          "Upload a photo of any waste or unused item. AI tells you if you can reuse, recycle, donate, or sell it — with a fair price estimate.",
       },
       { property: "og:url", content: "/" },
     ],
