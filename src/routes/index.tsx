@@ -51,6 +51,38 @@ async function fileToDataUrl(file: File): Promise<string> {
   });
 }
 
+type LinkItem = { name: string; url: string };
+
+const DONATE_PLATFORMS: LinkItem[] = [
+  { name: "Goonj", url: "https://goonj.org/donate-material/" },
+  { name: "Robin Hood Army", url: "https://robinhoodarmy.com/" },
+  { name: "GiveIndia", url: "https://www.giveindia.org/" },
+  { name: "Bhumi", url: "https://bhumi.ngo/" },
+  { name: "Local NGO (Google)", url: "https://www.google.com/search?q=NGO+near+me+accepting+donations" },
+];
+
+function donateLink(recipient: string): string {
+  const q = encodeURIComponent(recipient);
+  const lower = recipient.toLowerCase();
+  if (lower.includes("goonj")) return "https://goonj.org/donate-material/";
+  if (lower.includes("robin")) return "https://robinhoodarmy.com/";
+  if (lower.includes("salvation")) return "https://salvationarmy.org/";
+  if (lower.includes("kabadi") || lower.includes("scrap"))
+    return "https://www.google.com/search?q=kabadiwala+near+me";
+  return `https://www.google.com/search?q=${q}+near+me`;
+}
+
+function sellPlatforms(item: string): LinkItem[] {
+  const q = encodeURIComponent(item);
+  return [
+    { name: "OLX", url: `https://www.olx.in/items/q-${q}` },
+    { name: "Quikr", url: `https://www.quikr.com/search?query=${q}` },
+    { name: "Facebook Marketplace", url: `https://www.facebook.com/marketplace/search?query=${q}` },
+    { name: "Cashify", url: `https://www.cashify.in/search?q=${q}` },
+    { name: "WhatsApp friends", url: `https://wa.me/?text=${encodeURIComponent("Selling: " + item)}` },
+  ];
+}
+
 function HomePage() {
   const analyze = useServerFn(analyzeWaste);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -281,13 +313,34 @@ function HomePage() {
                     <p className="mb-2 text-sm">Consider donating to:</p>
                     <div className="flex flex-wrap gap-2">
                       {result.actions.donate.suggestedTo.map((s, idx) => (
-                        <span
+                        <a
                           key={idx}
-                          className="rounded-full bg-secondary px-3 py-1 text-xs font-medium"
+                          href={donateLink(s)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="rounded-full bg-secondary px-3 py-1 text-xs font-medium hover:bg-primary hover:text-primary-foreground"
                         >
-                          {s}
-                        </span>
+                          {s} ↗
+                        </a>
                       ))}
+                    </div>
+                    <div className="mt-4 border-t border-border pt-3">
+                      <p className="mb-2 text-xs font-medium text-muted-foreground">
+                        Popular donation platforms:
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {DONATE_PLATFORMS.map((p) => (
+                          <a
+                            key={p.name}
+                            href={p.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium hover:border-primary hover:text-primary"
+                          >
+                            {p.name} ↗
+                          </a>
+                        ))}
+                      </div>
                     </div>
                   </>
                 ) : (
@@ -317,6 +370,24 @@ function HomePage() {
                     <p className="text-xs text-muted-foreground">
                       {result.actions.sell.reasoning}
                     </p>
+                    <div className="mt-4 border-t border-border pt-3">
+                      <p className="mb-2 text-xs font-medium text-muted-foreground">
+                        List it here to find buyers:
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {sellPlatforms(result.itemName).map((p) => (
+                          <a
+                            key={p.name}
+                            href={p.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium hover:border-primary hover:text-primary"
+                          >
+                            {p.name} ↗
+                          </a>
+                        ))}
+                      </div>
+                    </div>
                   </>
                 ) : (
                   <p className="text-sm text-muted-foreground">Not worth selling.</p>
