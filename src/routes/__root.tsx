@@ -77,14 +77,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "ReWaste AI — Reuse, Recycle, Donate or Sell" },
+      { name: "description", content: "Snap a photo of any waste or unused item and let AI suggest the best next step — reuse, recycle, donate, or sell with a fair price estimate." },
+      { name: "author", content: "ReWaste AI" },
+      { property: "og:title", content: "ReWaste AI" },
+      { property: "og:description", content: "AI-powered waste sorter: reuse, recycle, donate or sell — with condition-based price estimates." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "ReWaste AI" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+
     ],
     links: [
       {
