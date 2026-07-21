@@ -281,13 +281,34 @@ function HomePage() {
                     <p className="mb-2 text-sm">Consider donating to:</p>
                     <div className="flex flex-wrap gap-2">
                       {result.actions.donate.suggestedTo.map((s, idx) => (
-                        <span
+                        <a
                           key={idx}
-                          className="rounded-full bg-secondary px-3 py-1 text-xs font-medium"
+                          href={donateLink(s)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="rounded-full bg-secondary px-3 py-1 text-xs font-medium hover:bg-primary hover:text-primary-foreground"
                         >
-                          {s}
-                        </span>
+                          {s} ↗
+                        </a>
                       ))}
+                    </div>
+                    <div className="mt-4 border-t border-border pt-3">
+                      <p className="mb-2 text-xs font-medium text-muted-foreground">
+                        Popular donation platforms:
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {DONATE_PLATFORMS.map((p) => (
+                          <a
+                            key={p.name}
+                            href={p.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium hover:border-primary hover:text-primary"
+                          >
+                            {p.name} ↗
+                          </a>
+                        ))}
+                      </div>
                     </div>
                   </>
                 ) : (
