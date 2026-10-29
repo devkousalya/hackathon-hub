@@ -8,6 +8,13 @@
       "when": 1793264578870,
       "tag": "0000_circular_economy_platform_schema",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1793264616189,
+      "tag": "0001_storage_bucket_policies",
+      "breakpoints": true
     }
   ]
 }
