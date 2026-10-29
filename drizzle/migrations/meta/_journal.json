@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1793264578870,
+      "tag": "0000_circular_economy_platform_schema",
+      "breakpoints": true
+    }
+  ]
+}
