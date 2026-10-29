@@ -15,6 +15,13 @@
       "when": 1793264616189,
       "tag": "0001_storage_bucket_policies",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1793264655696,
+      "tag": "0002_profile_foreign_keys",
+      "breakpoints": true
     }
   ]
 }
